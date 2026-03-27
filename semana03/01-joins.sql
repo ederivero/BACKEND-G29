@@ -92,5 +92,12 @@ ON proy.responsable_id = emp.id;
 
 
 -- 5. MOSTRAR EL NOMBRE DEL PROYECTO, NOMBRE Y APELLIDO DEL EMPLEADO Y NOMBRE DEL DEPARTAMENTO
+SELECT proy.nombre, emp.nombres, emp.apellidos, dpto.nombre
+FROM proyectos AS proy INNER JOIN empleados AS emp ON proy.responsable_id = emp.id 
+INNER JOIN departamentos AS dpto ON emp.departamento_id = dpto.id;
 
 -- 6. MOSTRAR EL NOMBRE DE LOS PROYECTOS DEL DEPARTAMENTO UBICADO EN EL PISO 1
+SELECT proy.nombre
+FROM proyectos AS proy INNER JOIN empleados AS emp ON proy.responsable_id = emp.id 
+INNER JOIN departamentos AS dpto ON emp.departamento_id = dpto.id
+WHERE dpto.piso = 1;
