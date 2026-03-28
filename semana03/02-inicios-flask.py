@@ -96,6 +96,36 @@ def devolverDepartamento(id):
             'message':'El departamento no existe'
         },400
 
+@servidor.route('/buscar-departamentos', methods = ['GET'])
+def buscarDepartamentos():
+    # los query params en Flask
+    queryParams = request.args
+    print(queryParams)
+
+    cursor = conexion.cursor()
+    if queryParams.get('piso'):
+        piso = queryParams.get('piso')
+        info = cursor.execute('SELECT * FROM departamentos WHERE piso = %s', (piso,))
+        data = cursor.fetchall()
+        
+        columnas = [col.name for col in info.description]
+
+        respuesta = []
+        for registro in data:
+            departamento = {}
+
+            for posicion in range(len(registro)):
+                departamento[columnas[posicion]] = registro[posicion]
+            
+            respuesta.append(departamento)
+        return {
+            'content': respuesta
+        }
+    
+    return {
+        'content':''
+    }
+
 
 @servidor.route('/registro', methods = ['POST'])
 def registroUsuario():
