@@ -1,0 +1,2 @@
+pip freeze > requirements.txt           se crea el archivo en el cual se listan todas las librerias con sus versiones
+pip install -r requirements.txt         se instalan las librerias declaradas en el archivo requirements.txt
