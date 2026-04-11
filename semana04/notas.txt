@@ -1,2 +1,7 @@
 pip freeze > requirements.txt           se crea el archivo en el cual se listan todas las librerias con sus versiones
 pip install -r requirements.txt         se instalan las librerias declaradas en el archivo requirements.txt
+
+flask db init                           inicializamos nuestro sistema de migracion
+flask db migrate -m "MENSAJE"           creara una nueva migracion si lo necesita de los cambios 
+flask db upgrade                        se ejecutaran las migraciones pendientes en la bd
+flask db downgrade                      se revertiran las migraciones efectuadas en la bd CUIDADO: la informacion se pierde y no podra ser recuperada
